@@ -6,13 +6,14 @@ main() {
   Info info = Info();
   Sell sellBook=Sell();
   bool repeatMenu = true;
-
-  print("Enter the number of list:");
-  print("1.Admin \n2.User \n3.Exit");
+  print("==========Log in page==========");
+  print("Enter the the number of the list:");
+  print("1.Admin \n2.Buyer \n3.Exit");
     read1(int menu1) {
       if(menu1==1){
          do {
-    print("Enter number of menu:");
+    print("==========Main Menu==========");
+    print("Enter the number of the menu:");
     print("1.Add \n2.Edit \n3.Delete \n4.view Information \n5.Search \n6.Exit");
     read(int menu) {
       switch (menu) {
@@ -33,7 +34,9 @@ main() {
           }
         case 4:
           {
+            print("==========Library==========");
             print(info.myListBook.join("\n"));
+            print("==========Library==========");
             break;
           }
         case 5: info.Search();
@@ -60,7 +63,7 @@ main() {
         exit(3);
       }
       else{
-        print("should be enter number between 1-3");
+        print("should be a number between 1-3");
       }
     }
 
@@ -112,6 +115,7 @@ class Info extends LibraryBook {
   ];
   @override
   Edit() { 
+    print("==========Edit Menu==========");
     print("Enter the ID of the book to edit it:");
     int editInput = int.parse(stdin.readLineSync()!);
     print("Enter the new Title:");
@@ -119,7 +123,7 @@ class Info extends LibraryBook {
     print("Enter the new Author:");
     String? newAuthor = stdin.readLineSync();
     print("Enter the new Price:");
-    int? newPrice = int.parse(stdin.readLineSync()!);
+    num? newPrice = double.parse(stdin.readLineSync()!);
     print("Enter the new Quantity:");
     int? newQuantity = int.parse(stdin.readLineSync()!);
     myListBook[editInput - 1] = BooksRequirments(
@@ -133,6 +137,7 @@ class Info extends LibraryBook {
   }
 
   Add() {
+    print("==========Add Menu==========");
     int book_id = 5;
     book_id = book_id + 1;
     print("Enter the title of book:");
@@ -153,86 +158,39 @@ class Info extends LibraryBook {
   }
 
   Delete() {
+    print("==========Delete==========");
     print("Enter the ID of the book to remove it:");
     int inp5 = int.parse(stdin.readLineSync()!);
     myListBook.removeAt(inp5 - 1);
   }
 
-  Search() {////////////////////////////////////////////////////////////////////////////
-// bool repeatMenu=true;
-// print("You can search for the book by:");
-//   print("1.Book ID \n2.Title of the book  \n3.Author name \n4.Exit");
-//     read1(int menu) {
-//          do {
-//     read(int menu) {
-//       if (menu==1) {
-//             print("Enter the ID of the book you need to search:");
-//           int inp4 = int.parse(stdin.readLineSync()!);
-//             var display= myListBook.firstWhere((id)=>id.book_id==inp4);
-//             print(display);
-//           }else if(menu==2){//title
-//           print("Enter the Title of the book you need to search:");
-//           int inp4 = int.parse(stdin.readLineSync()!);
-//            var display= myListBook.firstWhere((title)=>title.book_title==inp4);
-//             print(display);
-//           }else if(menu==3){//author
-//         print("Enter the Author of the book you need to search:");
-//           int inp4 = int.parse(stdin.readLineSync()!);
-//         var display= myListBook.firstWhere((author)=>author==inp4);
-//             print(display);
-//         }else if(menu==4){//exit
-//         exit(4);
-//         }else{
-//             print("should be a number between 1-4");
-//           }
-//   } while (repeatMenu);
-
-//     int? menu1 = int.parse(stdin.readLineSync()!);
-//     read1(menu1);}
-//     }
-//   }
-////////////////////////////////////////////////
-  bool repeatMenu2 = true;
-  print("You can search for the book by: \n1.Book ID \n2.Title of the book  \n3.Author name \n4.Exit");
-  var inp4 = int.parse(stdin.readLineSync()!);
-  do {
-    read(int menu2) {
-      switch (menu2) {
-        case 1:
-          {//id
+  Search() {
+ bool repeatMenu=true;
+ print("==========Search==========");
+ print("You can search for the book by:");
+   print("1.Book ID \n2.Title of the book  \n3.Author name \n4.Exit");
+      int? smenu = int.parse(stdin.readLineSync()!);
+       if (smenu==1) {
           print("Enter the ID of the book you need to search:");
           int inp4 = int.parse(stdin.readLineSync()!);
-            var display= myListBook.firstWhere((id)=>id.book_id==inp4);
-            print(display);
-            break;
+          var display= myListBook.firstWhere((id)=>id.book_id==inp4);
+          print("(((The book you are looking for is:))) \n((($display)))");
+          }else if(smenu==2){//title
+          print("Enter the Title of the book you need to search:");
+          String? inp5 = stdin.readLineSync();
+          var display= myListBook.firstWhere((title)=>title.book_title==inp5);
+          print("(((The book you are looking for is:))) \n((($display)))");
+          }else if(smenu==3){//author
+          print("Enter the Author of the book you need to search:");
+          String? inp6 = stdin.readLineSync();
+          var display= myListBook.firstWhere((author)=>author.author==inp6);
+          print("(((The book you are looking for is:))) \n((($display)))");
+          }else if(smenu==4){//exit
+          exit(4);
+          }else{
+          print("should be a number between 1-4");
           }
-        case 2:
-          {//title
-           var display= myListBook.firstWhere((title)=>title.book_title==inp4);
-            print(display);
-            break;
-          }
-        case 3:
-        {//author
-        var display= myListBook.firstWhere((author)=>author==inp4);
-            print(display);
-          break;
-        }
-        case 4:
-        {//exit
-        exit(4);
-        }
-        default:
-          {
-            print("should be a number between 1-4");
-            break;
-          }
-      }
-    }
-    int? menu2 = int.parse(stdin.readLineSync()!);
-    read(menu2);
-  } while (repeatMenu2);
-         }}
+   } } 
 
 class BooksRequirments {
   int? book_id = 0;
@@ -252,26 +210,24 @@ class Sell extends Info{
   var Price;
 
   Selling (){
+        print("==========Shop==========");
+        print("All the books we have:");
+        print(myListBook.join("\n"));
         print("Enter the ID of the book you need to buy:");
         int inp5 = int.parse(stdin.readLineSync()!);
         print("How many copies do you want?");
         int peces = int.parse(stdin.readLineSync()!);
         var display= myListBook.firstWhere((id)=>id.book_id==inp5);
-        print(display);
-        print(display.price);
-        print(display.quantity);
-        var newprice =display.price;
-        var quantity=display.quantity;
-        if(quantity!=0){
-           var newquantity=quantity-peces;
-           print(newquantity);
-           newprice= newprice!*peces;
-           print("the Price of the book= ${newprice}");
-          // myListBook.insert(quantity,newquantity);
-          // print(myListBook);
-        }else{
-           print("Sorry! we are out of stock");
-        }   
+        var newprice= (display.price!)*peces;
+        var newquantity=(display.quantity)-peces;
+        if(newquantity! < 0){
+          print("Sorry! we are out of stock");
+        }else {
+        print("You've seccessfully bought $peces copies of: \n((($display)))");
+        print("the total Price is= $newprice");
+        print("The new quantity of this book is: $newquantity");
+        }
+
   }
 
 }
