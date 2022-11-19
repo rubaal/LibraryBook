@@ -249,11 +249,13 @@ class BooksRequirments {
 }
 
 class Sell extends Info{
-  int? Price;
+  var Price;
 
   Selling (){
         print("Enter the ID of the book you need to buy:");
         int inp5 = int.parse(stdin.readLineSync()!);
+        print("How many copies do you want?");
+        int peces = int.parse(stdin.readLineSync()!);
         var display= myListBook.firstWhere((id)=>id.book_id==inp5);
         print(display);
         print(display.price);
@@ -261,8 +263,10 @@ class Sell extends Info{
         var newprice =display.price;
         var quantity=display.quantity;
         if(quantity!=0){
-           var newquantity=quantity-1;
+           var newquantity=quantity-peces;
            print(newquantity);
+           newprice= newprice!*peces;
+           print("the Price of the book= ${newprice}");
           // myListBook.insert(quantity,newquantity);
           // print(myListBook);
         }else{
