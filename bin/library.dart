@@ -246,6 +246,8 @@ class Sell extends Info{
         print("You've seccessfully bought $peces copies of: \n((($display)))");
         print("the total Price is= $newprice");
         print("The new quantity of this book is: $newquantity");
+        myListBook[inp5 - 1].quantity=newquantity;
+        //print(myListBook[inp5 - 1].quantity);
         }
 
   }
