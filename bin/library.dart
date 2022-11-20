@@ -123,31 +123,30 @@ class Info extends LibraryBook {
     int? editMenu2 = int.parse(stdin.readLineSync()!);
     switch(editMenu2){
     case 1:{
-      if(editMenu2 == 1){
       print("Enter the new Title:");
       String? newTitle = stdin.readLineSync(); 
       myListBook[editMenu - 1].book_title=newTitle;
-      print(myListBook[editMenu - 1].book_title);}
+      print(myListBook[editMenu - 1].book_title);
     break; }
-    case 2:{ if(editMenu2 == 2){
+    case 2:{ 
       print("Enter the new Author:");
       String? newAuthor = stdin.readLineSync(); 
       myListBook[editMenu - 1].author=newAuthor;
-      print(myListBook[editMenu - 1].author);}
+      print(myListBook[editMenu - 1].author);
     break;}
-    case 3:{ if(editMenu2 == 3){
+    case 3:{
       print("Enter the new Price:");
       int? newPrice = int.parse(stdin.readLineSync()!); 
       myListBook[editMenu - 1].price=newPrice;
-      print(myListBook[editMenu - 1].price);}
+      print(myListBook[editMenu - 1].price);
     break;}
-    case 4:{ if(editMenu2 == 4){
+    case 4:{ 
       print("Enter the new Quantity:");
       int? newQuantity = int.parse(stdin.readLineSync()!); 
       myListBook[editMenu - 1].quantity=newQuantity;
-      print(myListBook[editMenu - 1].quantity);}
+      print(myListBook[editMenu - 1].quantity);
     break;}
-    case 5:{ exit(5) ;}
+    case 5:{ exit(0) ;}
     default:{print("should be a number between 1-5");
     break;}
     } 
@@ -206,7 +205,7 @@ class Info extends LibraryBook {
           var display= myListBook.firstWhere((author)=>author.author==inp6);
           print("(((The book you are looking for is:))) \n((($display)))");
           }else if(smenu==4){//exit
-          exit(4);
+          exit(0);
           }else{
           print("should be a number between 1-4");
           }
